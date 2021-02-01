@@ -1,11 +1,18 @@
+/*
+ * @Author: your name
+ * @Date: 2021-02-01 17:13:11
+ * @LastEditTime: 2021-02-01 17:54:14
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \ts-cesium\src\router\index.ts
+ */
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/Home.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
   },
   {
     path: '/about',
