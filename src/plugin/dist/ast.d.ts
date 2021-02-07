@@ -3,7 +3,7 @@
  * @param {*}
  * @return {*}
  */
-export declare enum EntityType {
+export declare const enum EntityType {
     Point = "Point",
     Polyline = "Polyline",
     Polygon = "Polygon",
