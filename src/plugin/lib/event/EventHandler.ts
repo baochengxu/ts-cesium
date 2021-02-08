@@ -1,10 +1,10 @@
 /*
- * @,@Author: ,: your name
- * @,@Date: ,: 2021-02-02 00:44:33
- * @,@LastEditTime: ,: 2021-02-02 01:11:12
- * @,@LastEditors: ,: Please set LastEditors
- * @,@Description: ,: 事件基类
- * @,@FilePath: ,: \ts-cesium\src\plugin\lib\event\Handler.ts
+ * @Author: your name
+ * @Date: 2021-02-02 00:44:33
+ * @LastEditTime: 2021-02-08 17:15:52
+ * @LastEditors: Please set LastEditors
+ * @Description: 事件基类
+ * @FilePath: \ts-cesium\src\plugin\lib\event\Handler.ts
  */
 import { ScreenSpaceEventHandler, ScreenSpaceEventType } from 'cesium'
 import { View } from '../index'
@@ -51,9 +51,17 @@ export default class EventHandler {
         })
     }
     // 鼠标移动事件
-    movehandler(callback: (...params: any[]) => void | any){
+    movehandler(callback: (...params: any[]) => void | any) {
         this._baseHandler(ScreenSpaceEventType.MOUSE_MOVE, (e) => {
             callback && callback(e)
         })
+    }
+    /**
+     * @description: 移除监听事件
+     * @param {*}
+     * @return {*}
+     */
+    removeEvent(EventType: ScreenSpaceEventType) {
+        this.handler.removeInputAction(EventType)
     }
 }

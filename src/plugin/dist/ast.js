@@ -6,3 +6,4 @@
  * @Description: 全局基础类型定义
  * @FilePath: \ts-cesuim\src\plugin\lib\ast.ts
  */
+export {};

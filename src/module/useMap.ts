@@ -1,8 +1,8 @@
 /*
  * @,@Author: ,: your name
  * @,@Date: ,: 2021-02-02 23:01:43
- * @,@LastEditTime: ,: 2021-02-03 00:39:33
- * @,@LastEditors: ,: Please set LastEditors
+ * @LastEditTime: 2021-02-08 14:40:04
+ * @LastEditors: Please set LastEditors
  * @,@Description: ,: In User Settings Edit
  * @,@FilePath: ,: \ts-cesium\src\module\useMap.ts
  */
@@ -14,8 +14,8 @@ export const useMap = () => {
             el: 'cesium-container',
             options: {
                 homeButton: false,
-                timeline: false,
-                animation: false,
+                timeline: true,
+                animation: true,
                 navigationHelpButton: false,
                 infoBox: false,
                 fullscreenButton:false,
