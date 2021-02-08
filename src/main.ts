@@ -1,10 +1,10 @@
 /*
- * @,@Author: ,: your name
- * @,@Date: ,: 2021-02-01 22:54:24
- * @,@LastEditTime: ,: 2021-02-03 00:30:56
- * @,@LastEditors: ,: Please set LastEditors
- * @,@Description: ,: In User Settings Edit
- * @,@FilePath: ,: \ts-cesium\src\main.ts
+ * @Author: your name
+ * @Date: 2021-02-01 22:54:24
+ * @LastEditTime: 2021-02-08 17:28:31
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \ts-cesium\src\main.ts
  */
 import { createApp } from 'vue'
 import App from './App.vue'

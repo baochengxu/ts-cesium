@@ -1,10 +1,10 @@
 /*
- * @,@Author: ,: your name
- * @,@Date: ,: 2021-02-02 23:01:43
- * @LastEditTime: 2021-02-08 14:40:04
+ * @Author: your name
+ * @Date: 2021-02-02 23:01:43
+ * @LastEditTime: 2021-02-08 17:29:22
  * @LastEditors: Please set LastEditors
- * @,@Description: ,: In User Settings Edit
- * @,@FilePath: ,: \ts-cesium\src\module\useMap.ts
+ * @Description: In User Settings Edit
+ * @FilePath: \ts-cesium\src\module\useMap.ts
  */
 import { View, ViewProps } from '@/plugin/dist'
 let map: View

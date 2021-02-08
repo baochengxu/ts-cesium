@@ -1,10 +1,10 @@
 /*
- * @,@Author: ,: your name
- * @,@Date: ,: 2021-02-02 23:22:03
- * @,@LastEditTime: ,: 2021-02-07 22:40:18
- * @,@LastEditors: ,: Please set LastEditors
- * @,@Description: ,: In User Settings Edit
- * @,@FilePath: ,: \ts-cesium\vue.config.js
+ * @Author: your name
+ * @Date: 2021-02-02 23:22:03
+ * @LastEditTime: 2021-02-08 17:28:04
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \ts-cesium\vue.config.js
  */
 const webpack = require('webpack');
 const path = require('path');
