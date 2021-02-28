@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-02 23:22:03
- * @LastEditTime: 2021-02-08 17:28:04
+ * @LastEditTime: 2021-02-12 14:58:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \ts-cesium\vue.config.js
@@ -31,7 +31,7 @@ module.exports = {
             // 解决：Unable to determine Cesium base URL automatically,…efining a global variable called CESIUM_BASE_URL.
             new webpack.DefinePlugin({
                 // Define relative base path in cesium for loading assets
-                CESIUM_BASE_URL: JSON.stringify(''),
+                CESIUM_BASE_URL: JSON.stringify('./'),
             }),
         ]
     },

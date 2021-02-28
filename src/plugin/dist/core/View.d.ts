@@ -1,7 +1,7 @@
-import { Camera, Scene, ImageryProvider, ImageryLayer, TerrainProvider } from "cesium";
+import { Camera, Scene, Viewer, ImageryProvider, ImageryLayer, TerrainProvider } from "cesium";
 import { ViewProps } from './index';
 export default class View {
-    private viewer;
+    viewer: Viewer;
     scene: Scene;
     camera: Camera;
     private logo;
@@ -34,12 +34,6 @@ export default class View {
     removeImageryProvider(layer?: ImageryLayer): void;
     destroyParts(): void;
     /**
-   * @description: 设置鼠标在地图上的样式
-   * @param {string} cursor
-   * @return {*}
-   */
-    setMouseStyle(cursor: string): void;
-    /**
    * @description: 设置地球图层
    * @param {ImageryProvider} layer
    * @return {*}
@@ -63,6 +57,12 @@ export default class View {
      * @return {*}
      */
     setTerrain: (terrainProvider: TerrainProvider) => void;
+    /**
+     * @description: 显示每秒帧数
+     * @param {*}
+     * @return {*}
+     */
+    showFrames(): void;
     /** ------------------------------功能api----------------------------------- */
     /**
      * @description: 切换地图模式
@@ -70,4 +70,22 @@ export default class View {
      * @return {*}
      */
     switchMapModel(model: '2D' | '3D' | 'ColumbusView', duration?: number): void;
+    /**
+     * @description: 设置鼠标在地图上的样式
+     * @param {string} cursor
+     * @return {*}
+     */
+    setMouseStyle(cursor: string): void;
+    /**
+     * @description:  设置鼠标在地图上的样式为十字准线
+     * @param {*}
+     * @return {*}
+     */
+    setMouseStyleToCrosshair(): void;
+    /**
+     * @description: 设置鼠标在地图上的样式为默认
+     * @param {*}
+     * @return {*}
+     */
+    setMouseStyleToDefault(): void;
 }

@@ -12,4 +12,10 @@ export default class EventHandler {
     leftHandler(callback: (...params: any[]) => void | any): void;
     dbHandler(callback: (...params: any[]) => void | any): void;
     movehandler(callback: (...params: any[]) => void | any): void;
+    /**
+     * @description: 移除监听事件
+     * @param {*}
+     * @return {*}
+     */
+    removeEvent(EventType: ScreenSpaceEventType): void;
 }

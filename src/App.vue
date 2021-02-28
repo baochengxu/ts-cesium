@@ -1,7 +1,15 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-02-12 01:09:07
+ * @LastEditTime: 2021-02-12 14:55:33
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \ts-cesium\src\App.vue
+-->
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/test">Test</router-link>
   </div>
   <router-view/>
 </template>

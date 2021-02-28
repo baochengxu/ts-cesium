@@ -87,14 +87,6 @@ var View = /** @class */ (function () {
         }
     };
     /**
-   * @description: 设置鼠标在地图上的样式
-   * @param {string} cursor
-   * @return {*}
-   */
-    View.prototype.setMouseStyle = function (cursor) {
-        this.container.style.cursor = cursor;
-    };
-    /**
      * @description: 开启地形深度测试
      * @param {*}
      * @return {*}
@@ -109,6 +101,14 @@ var View = /** @class */ (function () {
      */
     View.prototype.closeDepthTestAgainstTerrain = function () {
         this.viewer.scene.globe.depthTestAgainstTerrain = false;
+    };
+    /**
+     * @description: 显示每秒帧数
+     * @param {*}
+     * @return {*}
+     */
+    View.prototype.showFrames = function () {
+        this.viewer.scene.debugShowFramesPerSecond = true;
     };
     /** ------------------------------功能api----------------------------------- */
     /**
@@ -129,6 +129,30 @@ var View = /** @class */ (function () {
                 this.viewer.scene.morphToColumbusView(duration);
                 break;
         }
+    };
+    /**
+     * @description: 设置鼠标在地图上的样式
+     * @param {string} cursor
+     * @return {*}
+     */
+    View.prototype.setMouseStyle = function (cursor) {
+        this.container.style.cursor = cursor;
+    };
+    /**
+     * @description:  设置鼠标在地图上的样式为十字准线
+     * @param {*}
+     * @return {*}
+     */
+    View.prototype.setMouseStyleToCrosshair = function () {
+        this.setMouseStyle('crosshair');
+    };
+    /**
+     * @description: 设置鼠标在地图上的样式为默认
+     * @param {*}
+     * @return {*}
+     */
+    View.prototype.setMouseStyleToDefault = function () {
+        this.setMouseStyle('default');
     };
     return View;
 }());

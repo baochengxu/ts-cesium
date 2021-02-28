@@ -1,10 +1,10 @@
 /*
- * @,@Author: ,: your name
- * @,@Date: ,: 2021-02-02 00:44:33
- * @,@LastEditTime: ,: 2021-02-02 01:11:12
- * @,@LastEditors: ,: Please set LastEditors
- * @,@Description: ,: 事件基类
- * @,@FilePath: ,: \ts-cesium\src\plugin\lib\event\Handler.ts
+ * @Author: your name
+ * @Date: 2021-02-02 00:44:33
+ * @LastEditTime: 2021-02-08 17:15:52
+ * @LastEditors: Please set LastEditors
+ * @Description: 事件基类
+ * @FilePath: \ts-cesium\src\plugin\lib\event\Handler.ts
  */
 import { ScreenSpaceEventHandler, ScreenSpaceEventType } from 'cesium';
 var EventHandler = /** @class */ (function () {
@@ -52,6 +52,14 @@ var EventHandler = /** @class */ (function () {
         this._baseHandler(ScreenSpaceEventType.MOUSE_MOVE, function (e) {
             callback && callback(e);
         });
+    };
+    /**
+     * @description: 移除监听事件
+     * @param {*}
+     * @return {*}
+     */
+    EventHandler.prototype.removeEvent = function (EventType) {
+        this.handler.removeInputAction(EventType);
     };
     return EventHandler;
 }());

@@ -3,7 +3,7 @@ import { Camera, Scene, Viewer, Ion, Rectangle, ImageryProvider, ImageryLayer, T
 /*
  * @Author: your name
  * @Date:: 2021-02-02 00:04:59
- * @LastEditTime: 2021-02-08 17:11:54
+ * @LastEditTime: 2021-02-19 23:14:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \ts-cesium\src\plugin\lib\core\View.ts
