@@ -15,7 +15,7 @@ export default class OperationId {
     static EncodeEntityId({ type, children, id }: {
         type: EntityType;
         children?: EntityType | '';
-        id: string;
+        id: string | number;
     }): string;
     /**
      * @description: 生成组件id

@@ -1,4 +1,4 @@
 import { View } from "../core";
-export default class Point {
+export default class Billboard {
     constructor(map: View);
 }

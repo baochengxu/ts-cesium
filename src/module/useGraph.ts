@@ -1,31 +1,20 @@
 /*
  * @Author: your name
  * @Date: 2021-02-11 23:52:13
- * @LastEditTime: 2021-02-19 23:42:09
+ * @LastEditTime: 2021-03-07 00:42:20
  * @LastEditors: Please set LastEditors
  * @Description: 绘制图形实现
- * @FilePath: \ts-cesium\src\module\useBase.ts
+ * @FilePath: \ts-cesium\src\module\useGraph.ts
  */
 
-import { View, EntityType, Circle, Rect } from '@/plugin/dist'
+import { View } from '@/plugin/dist/index'
 import { useMap } from './useMap'
-let geometry: Circle | Rect
-// 匹配对应类型的图形
-const geometrys = {
-    'Point': (map: View) => new Circle(map),
-    'Polyline': (map: View) => new Circle(map),
-    'Polygon': (map: View) => new Circle(map),
-    'Circle': (map: View) => new Circle(map),
-    'Rect': (map: View) => new Rect(map),
-    'Billboard': (map: View) => new Circle(map),
-    'Label': (map: View) => new Circle(map)
-}
+let geometry: any
 
-export const useGraph = (type: EntityType) => {
+export const useGraph = () => {
     let map: View = useMap()
-    if (!type) return;
     if (!geometry) {
-        geometry = geometrys[type](map)
+        geometry = map.getGraph()
     }
     return geometry
 }

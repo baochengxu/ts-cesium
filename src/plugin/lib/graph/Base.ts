@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-02-01 17:34:26
- * @LastEditTime: 2021-02-08 15:08:24
+ * @LastEditTime: 2021-03-07 02:19:21
  * @LastEditors: Please set LastEditors
  * @Description: 地球基类
- * @FilePath: \ts-cesuim\src\plugin\lib\core\Base.ts
+ * @FilePath: \ts-cesium\src\plugin\lib\graph\Base.ts
  */
-import { CallbackProperty, Cartesian3, ClassificationType, Material, EllipsoidSurfaceAppearance, Color, EllipseGeometry, GeometryInstance, Math, Primitive, PrimitiveCollection, Rectangle, VertexFormat } from 'cesium'
+import { Color, PrimitiveCollection } from 'cesium'
 import { EntityType, View, OperationId } from '../index'
 
 /**
@@ -17,27 +17,11 @@ export default class Base<T extends { getGeometryInstanceAttributes(id: string):
     protected primitives: Map<string, T> = new Map()
     // 用于装载图形的容器集合
     protected collection: PrimitiveCollection
+    // 图形类型
     protected type: EntityType
     constructor(protected map: View, type: EntityType) {
         this.type = type
         this.collection = map.scene.primitives.add(new PrimitiveCollection())
-        // let instance = new Primitive({
-        //     geometryInstances: new GeometryInstance({
-        //         geometry: new EllipseGeometry({
-        //             center: Cartesian3.fromDegrees(-100.0, 20.0),
-        //             semiMinorAxis: 500000.0,
-        //             semiMajorAxis: 1000000.0,
-        //             rotation: Math.PI_OVER_FOUR,
-        //             vertexFormat: VertexFormat.POSITION_AND_ST
-        //         })
-        //     }),
-        //     appearance: new EllipsoidSurfaceAppearance({
-        //         material: Material.fromType('Checkerboard')
-        //     })
-        // })
-        // let pri = this.collection.add(instance) as Primitive
-        // let prin = map.scene.primitives.add(instance) as T;
-        // this.primitives.set("primitive", pri)
     }
     /**
      * @description: 绘制并缓存对象
@@ -80,6 +64,7 @@ export default class Base<T extends { getGeometryInstanceAttributes(id: string):
         const group = this.primitives.get(groupName)
         if (group) {
             return group.getGeometryInstanceAttributes(OperationId.EncodeEntityId({ type: this.type, id }))
+            // return group.getGeometryInstanceAttributes(id)
         }
     }
     /**
@@ -109,7 +94,7 @@ export default class Base<T extends { getGeometryInstanceAttributes(id: string):
     public getPrimitives() {
         return this.primitives;
     }
-    public getPrimitiveById(id: string) {
-        return this.primitives.get(id)
+    public getPrimitiveById(groupName: string) {
+        return this.primitives.get(groupName)
     }
 }

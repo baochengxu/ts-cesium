@@ -1,13 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-02-02 00:43:49
- * @LastEditTime: 2021-02-08 17:16:06
+ * @LastEditTime: 2021-03-02 00:36:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \ts-cesium\src\plugin\lib\event\index.ts
  */
 
-import EventHandler from './EventHandler'
-export {
-    EventHandler
-}
+export { default as EventHandler} from './EventHandler'

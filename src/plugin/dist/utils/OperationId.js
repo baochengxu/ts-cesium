@@ -1,7 +1,7 @@
 /*
  * @Author: wuyue
  * @Date: 2021-01-11 17:01:24
- * @LastEditTime: 2021-02-08 17:11:17
+ * @LastEditTime: 2021-03-07 02:06:07
  * @LastEditors: Please set LastEditors
  * @Description: 工具类
  */
@@ -31,6 +31,7 @@ var OperationId = /** @class */ (function () {
      */
     OperationId.EncodeEntityId = function (_a) {
         var type = _a.type, _b = _a.children, children = _b === void 0 ? '' : _b, _c = _a.id, id = _c === void 0 ? this.GetGUID() : _c;
+        console.log(type + "_" + children + "_0_0_" + id);
         return type + "_" + children + "_0_0_" + id;
     };
     /**

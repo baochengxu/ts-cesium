@@ -10,5 +10,5 @@ export default class Circle extends Base<Primitive | GroundPrimitive> {
      * @param {number} height 高度
      * @return {*}
      */
-    drawCircle({ lat, lon, height, radius, color }: drawCircleType): void;
+    drawCircle({ lat, lon, height, radius, color, id }: drawCircleType): void;
 }

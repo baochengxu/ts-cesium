@@ -1,2 +1,1 @@
-import EventHandler from './EventHandler';
-export { EventHandler };
+export { default as EventHandler } from './EventHandler';

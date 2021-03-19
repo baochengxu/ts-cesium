@@ -1,14 +1,25 @@
 import { Camera, Scene, Viewer, Ion, Rectangle, ImageryProvider, ImageryLayer, TerrainProvider } from "cesium";
-
+import { EntityType } from "../ast";
+import { Point, Rect, Circle, Billboard, Label, Polyline, Polygon } from '../graph'
 /*
  * @Author: your name
  * @Date:: 2021-02-02 00:04:59
- * @LastEditTime: 2021-02-19 23:14:10
+ * @LastEditTime: 2021-03-07 00:43:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \ts-cesium\src\plugin\lib\core\View.ts
  */
 import { ViewProps } from './index'
+type Entitys = {
+    Point: Point
+    Label: Label
+    Billboard: Billboard,
+    Rect: Rect
+    Circle: Circle
+    Polyline: Polyline
+    Polygon: Polygon
+}
+// type geoType = keyof Entitys
 export default class View {
     // viewer 地球主体
     public viewer: Viewer
@@ -21,20 +32,13 @@ export default class View {
     // 地球控件
     public container: HTMLElement
     // 时间控件
-    public animation: HTMLElement | undefined
+    public animation?: HTMLElement
     // 时间轴控件
-    public timeline: HTMLElement | undefined
+    public timeline?: HTMLElement
     // 图形成员对象
-    private entitys?: {
-        // point: Point
-        // polyline: Polyline
-        // rect: Rect
-        // polygon: Polygon
-        // circle: Circle
-        // billboard: Billboard
-    }
+    private entitys?: Entitys
     constructor(props: ViewProps) {
-        // Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlNGQ4OTdhMC0zMjAwLTRkYzMtYTZlMi03YTljM2JiMDBhZDkiLCJpZCI6NDMxNzcsImlhdCI6MTYxMjI4NDk0OX0.BkbalpDSkjTNl4DD3g4vhnf7L53C4gTXMaTf98e5Psk'
+        Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlNGQ4OTdhMC0zMjAwLTRkYzMtYTZlMi03YTljM2JiMDBhZDkiLCJpZCI6NDMxNzcsImlhdCI6MTYxMjI4NDk0OX0.BkbalpDSkjTNl4DD3g4vhnf7L53C4gTXMaTf98e5Psk'
         this.viewer = new Viewer(props.el, props.options)
         this.scene = this.viewer.scene
         this.camera = this.viewer.camera
@@ -45,6 +49,7 @@ export default class View {
             this.timeline = this.viewer.timeline?.container as HTMLElement
         }
         this.defaultSetting()
+        this._createGraph()
     }
     /**
      * @description：地图默认设置
@@ -55,6 +60,33 @@ export default class View {
         this.timeline && (this.timeline.style.visibility = 'hidden')
         this.flyToDefaultLocation()
     }
+    /**
+     * @description: 创建图形
+     * @param {*}
+     * @return {*}
+     */
+    private _createGraph() {
+        this.entitys = {
+            Rect: new Rect(this),
+            Circle: new Circle(this),
+            Polygon: new Polygon(this),
+            Polyline: new Polyline(this),
+            Point: new Point(this),
+            Label: new Label(this),
+            Billboard: new Billboard(this)
+        }
+    }
+    /**
+     * @description: 获取对应图形
+     * @param {*}
+     * @return {*}
+     */
+    getGraph() {
+        return this.entitys;
+    }
+    // getGraphByType(type: keyof Entitys): Entitys[keyof Entitys] {
+    //     return this.entitys[type]
+    // }
     /**
      * @description: 移动相机到默认位置
      * @param {*}

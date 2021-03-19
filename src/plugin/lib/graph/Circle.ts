@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-02-08 15:12:47
- * @LastEditTime: 2021-02-19 23:24:16
+ * @LastEditTime: 2021-03-07 02:06:48
  * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
+ * @Description: 绘制圆形
  * @FilePath: \ts-cesium\src\plugin\lib\graph\Circle.ts
  */
-import { View, EntityType, drawCircleType } from '../index'
+import { View, EntityType, drawCircleType, OperationId } from '../index'
 import { Primitive, GroundPrimitive, CircleGeometry, GeometryInstance, Cartesian3, PerInstanceColorAppearance, ColorGeometryInstanceAttribute } from 'cesium'
 import Base from './Base'
 export default class Circle extends Base<Primitive | GroundPrimitive> {
@@ -21,13 +21,14 @@ export default class Circle extends Base<Primitive | GroundPrimitive> {
      * @param {number} height 高度
      * @return {*}
      */
-    drawCircle({ lat, lon, height, radius, color }: drawCircleType) {
+    drawCircle({ lat, lon, height, radius, color, id }: drawCircleType) {
         let Circle = new GeometryInstance({
             geometry: new CircleGeometry({
                 center: Cartesian3.fromDegrees(lat, lon, height),
                 radius,
                 vertexFormat: PerInstanceColorAppearance.VERTEX_FORMAT
             }),
+            id: OperationId.EncodeEntityId({ type: EntityType.Circle, id }),
             attributes: {
                 color: ColorGeometryInstanceAttribute.fromColor(color)
             }
@@ -38,6 +39,6 @@ export default class Circle extends Base<Primitive | GroundPrimitive> {
                 closed: false
             })
         })
-        super.resolve('geometry', circleGeometry)
+        super.resolve('circle', circleGeometry)
     }
 }

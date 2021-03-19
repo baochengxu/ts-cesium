@@ -1,7 +1,7 @@
 /*
  * @Author: wuyue
  * @Date: 2021-01-11 17:01:24
- * @LastEditTime: 2021-02-08 17:11:17
+ * @LastEditTime: 2021-03-07 02:06:07
  * @LastEditors: Please set LastEditors
  * @Description: 工具类
  */
@@ -31,7 +31,8 @@ export default class OperationId {
    * @param {string} id
    * @return {*} 格式:'Type_ChildrenType_占位_占位_ID'
    */
-  static EncodeEntityId({ type, children = '', id = this.GetGUID() }: { type: EntityType; children?: EntityType | ''; id: string }) {
+  static EncodeEntityId({ type, children = '', id = this.GetGUID() }: { type: EntityType; children?: EntityType | ''; id: string | number }) {
+    console.log(`${type}_${children}_0_0_${id}`);
     return `${type}_${children}_0_0_${id}`
   }
   /**

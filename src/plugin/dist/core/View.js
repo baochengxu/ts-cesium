@@ -1,4 +1,6 @@
-import { Viewer, Rectangle } from "cesium";
+import { Viewer, Ion, Rectangle } from "cesium";
+import { Point, Rect, Circle, Billboard, Label, Polyline, Polygon } from '../graph';
+// type geoType = keyof Entitys
 var View = /** @class */ (function () {
     function View(props) {
         var _this = this;
@@ -25,7 +27,7 @@ var View = /** @class */ (function () {
             _this.viewer.terrainProvider = terrainProvider;
             _this.openDepthTestAgainstTerrain();
         };
-        // Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlNGQ4OTdhMC0zMjAwLTRkYzMtYTZlMi03YTljM2JiMDBhZDkiLCJpZCI6NDMxNzcsImlhdCI6MTYxMjI4NDk0OX0.BkbalpDSkjTNl4DD3g4vhnf7L53C4gTXMaTf98e5Psk'
+        Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlNGQ4OTdhMC0zMjAwLTRkYzMtYTZlMi03YTljM2JiMDBhZDkiLCJpZCI6NDMxNzcsImlhdCI6MTYxMjI4NDk0OX0.BkbalpDSkjTNl4DD3g4vhnf7L53C4gTXMaTf98e5Psk';
         this.viewer = new Viewer(props.el, props.options);
         this.scene = this.viewer.scene;
         this.camera = this.viewer.camera;
@@ -36,6 +38,7 @@ var View = /** @class */ (function () {
             this.timeline = (_b = this.viewer.timeline) === null || _b === void 0 ? void 0 : _b.container;
         }
         this.defaultSetting();
+        this._createGraph();
     }
     /**
      * @description：地图默认设置
@@ -46,6 +49,33 @@ var View = /** @class */ (function () {
         this.timeline && (this.timeline.style.visibility = 'hidden');
         this.flyToDefaultLocation();
     };
+    /**
+     * @description: 创建图形
+     * @param {*}
+     * @return {*}
+     */
+    View.prototype._createGraph = function () {
+        this.entitys = {
+            Rect: new Rect(this),
+            Circle: new Circle(this),
+            Polygon: new Polygon(this),
+            Polyline: new Polyline(this),
+            Point: new Point(this),
+            Label: new Label(this),
+            Billboard: new Billboard(this)
+        };
+    };
+    /**
+     * @description: 获取对应图形
+     * @param {*}
+     * @return {*}
+     */
+    View.prototype.getGraph = function () {
+        return this.entitys;
+    };
+    // getGraphByType(type: keyof Entitys): Entitys[keyof Entitys] {
+    //     return this.entitys[type]
+    // }
     /**
      * @description: 移动相机到默认位置
      * @param {*}

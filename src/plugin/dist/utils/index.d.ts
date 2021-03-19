@@ -1,3 +1,2 @@
-import OperationId from './OperationId';
-import Algorithm from './Algorithm';
-export { Algorithm, OperationId };
+export { default as OperationId } from './OperationId';
+export { default as Algorithm } from './Algorithm';

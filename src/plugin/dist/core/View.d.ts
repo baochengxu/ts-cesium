@@ -1,19 +1,41 @@
 import { Camera, Scene, Viewer, ImageryProvider, ImageryLayer, TerrainProvider } from "cesium";
+import { Point, Rect, Circle, Billboard, Label, Polyline, Polygon } from '../graph';
 import { ViewProps } from './index';
+declare type Entitys = {
+    Point: Point;
+    Label: Label;
+    Billboard: Billboard;
+    Rect: Rect;
+    Circle: Circle;
+    Polyline: Polyline;
+    Polygon: Polygon;
+};
 export default class View {
     viewer: Viewer;
     scene: Scene;
     camera: Camera;
     private logo;
     container: HTMLElement;
-    animation: HTMLElement | undefined;
-    timeline: HTMLElement | undefined;
+    animation?: HTMLElement;
+    timeline?: HTMLElement;
     private entitys?;
     constructor(props: ViewProps);
     /**
      * @description：地图默认设置
      */
     private defaultSetting;
+    /**
+     * @description: 创建图形
+     * @param {*}
+     * @return {*}
+     */
+    private _createGraph;
+    /**
+     * @description: 获取对应图形
+     * @param {*}
+     * @return {*}
+     */
+    getGraph(): Entitys | undefined;
     /**
      * @description: 移动相机到默认位置
      * @param {*}
@@ -89,3 +111,4 @@ export default class View {
      */
     setMouseStyleToDefault(): void;
 }
+export {};

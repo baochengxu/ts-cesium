@@ -6,11 +6,22 @@ var __extends = (this && this.__extends) || (function () {
         return extendStatics(d, b);
     };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+/*
+ * @Author: your name
+ * @Date: 2021-02-08 15:12:47
+ * @LastEditTime: 2021-03-07 02:06:48
+ * @LastEditors: Please set LastEditors
+ * @Description: 绘制圆形
+ * @FilePath: \ts-cesium\src\plugin\lib\graph\Circle.ts
+ */
+import { OperationId } from '../index';
 import { Primitive, CircleGeometry, GeometryInstance, Cartesian3, PerInstanceColorAppearance, ColorGeometryInstanceAttribute } from 'cesium';
 import Base from './Base';
 var Circle = /** @class */ (function (_super) {
@@ -28,13 +39,14 @@ var Circle = /** @class */ (function (_super) {
      * @return {*}
      */
     Circle.prototype.drawCircle = function (_a) {
-        var lat = _a.lat, lon = _a.lon, height = _a.height, radius = _a.radius, color = _a.color;
+        var lat = _a.lat, lon = _a.lon, height = _a.height, radius = _a.radius, color = _a.color, id = _a.id;
         var Circle = new GeometryInstance({
             geometry: new CircleGeometry({
                 center: Cartesian3.fromDegrees(lat, lon, height),
                 radius: radius,
                 vertexFormat: PerInstanceColorAppearance.VERTEX_FORMAT
             }),
+            id: OperationId.EncodeEntityId({ type: "Circle" /* Circle */, id: id }),
             attributes: {
                 color: ColorGeometryInstanceAttribute.fromColor(color)
             }
@@ -45,7 +57,7 @@ var Circle = /** @class */ (function (_super) {
                 closed: false
             })
         });
-        _super.prototype.resolve.call(this, 'geometry', circleGeometry);
+        _super.prototype.resolve.call(this, 'circle', circleGeometry);
     };
     return Circle;
 }(Base));

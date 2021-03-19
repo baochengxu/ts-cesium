@@ -3,5 +3,5 @@ import { Primitive, GroundPrimitive } from 'cesium';
 import Base from './Base';
 export default class Rect extends Base<Primitive | GroundPrimitive> {
     constructor(map: View, opts?: drawRectType);
-    drawRect({ west, south, east, north, color }: drawRectType): void;
+    drawRect({ id, west, south, east, north, color }: drawRectType): void;
 }

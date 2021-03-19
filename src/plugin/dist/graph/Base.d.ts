@@ -56,5 +56,5 @@ export default class Base<T extends {
      */
     setColor(groupName: string, id: string, color: Color): void;
     getPrimitives(): Map<string, T>;
-    getPrimitiveById(id: string): T | undefined;
+    getPrimitiveById(groupName: string): T | undefined;
 }

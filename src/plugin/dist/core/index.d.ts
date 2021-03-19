@@ -1,3 +1,3 @@
 export * from './types';
-import View from './View';
-export { View };
+export { default as View } from './View';
+export { default as Coordinate } from './Coordinate';
